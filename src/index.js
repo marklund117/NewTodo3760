@@ -36,13 +36,21 @@ const todoItem = {
 
 // a function to display the whole array
 function displayArray(){
-
+    // this will be for each -> append child stuff
 }
 
 // a function to add a new item to the array with the + button
 function addNewItem(){
-
+    // get the text from the input field
+    let givenText = document.getElementById("inputBox").value
+    // new object to push
+    let theNewObj = Object.create(todoItem)
+    // set values
+    theNewObj.isComplete = false
+    theNewObj.itemText = givenText
+    // add it to the start of the array
+    todoArray.unshift(theNewObj)
 }
 
 // attach this functionality to the actual + button
-document.getElementById("addItemButton").addEventListener("click", )
+document.getElementById("addItemButton").addEventListener("click", addNewItem())
