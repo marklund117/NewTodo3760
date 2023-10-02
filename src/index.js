@@ -37,6 +37,15 @@ const todoItem = {
 // a function to display the whole array
 function displayArray(){
     // this will be for each -> append child stuff
+    let theList = document.getElementsByClassName("todoList")
+    // assign the list an empty value
+    theList.innerHTML = ''
+    todoArray.forEach((item) => 
+    let newTodo = document.createElement(li)
+    newTodo.innerHTML = item.itemText
+    theList.appendChild(newTodo)
+    )
+
 }
 
 // a function to add a new item to the array with the + button
@@ -50,6 +59,8 @@ function addNewItem(){
     theNewObj.itemText = givenText
     // add it to the start of the array
     todoArray.unshift(theNewObj)
+    // now display the whole thing
+    displayArray()
 }
 
 // attach this functionality to the actual + button
