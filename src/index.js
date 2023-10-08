@@ -64,7 +64,7 @@ function addNewItem(){
     // now display the whole thing
     displayArray()
     // console log troubleshooting stuff
-    console.log('addNewItem function has executed')
+    console.log('addNewItem function has executed') // why does this execute before button press?
     console.log(`the givenText variable has a value of ${givenText}`)
     console.log(todoArray)
 }
