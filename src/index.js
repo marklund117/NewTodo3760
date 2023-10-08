@@ -37,8 +37,9 @@ const todoItem = {
 // a function to display the whole array
 function displayArray(){
     // this will be for each -> append child stuff
-    let theList = document.getElementsByClassName("todoList")
-    // assign the list an empty value
+    // why is the [0] needed if there's only one element with that class naime anyway?
+    let theList = document.getElementsByClassName("todoList")[0]
+    // assign the list an empty value so we don't duplicate
     theList.innerHTML = ''
     // now repopulate with the current up-to-date contents of the array
     todoArray.forEach((item) => {
@@ -62,7 +63,10 @@ function addNewItem(){
     todoArray.unshift(theNewObj)
     // now display the whole thing
     displayArray()
+    // console log troubleshooting stuff
     console.log('addNewItem function has executed')
+    console.log(`the givenText variable has a value of ${givenText}`)
+    console.log(todoArray)
 }
 
 // attach this functionality to the actual + button
