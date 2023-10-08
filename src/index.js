@@ -37,7 +37,7 @@ const todoItem = { // is this even the right syntax? What about a constructor fu
 // a function to display the whole array
 function displayArray(){
     // this will be for each -> append child stuff
-    // why is the [0] needed if there's only one element with that class naime anyway?
+    // why is the [0] needed if there's only one element with that class name anyway?
     let theList = document.getElementsByClassName("todoList")[0]
     // assign the list an empty value so we don't duplicate
     theList.innerHTML = ''
@@ -70,4 +70,5 @@ function addNewItem(){
 }
 
 // attach this functionality to the actual + button
-document.getElementById("addItemButton").addEventListener("click", addNewItem())
+document.getElementById("addItemButton").addEventListener("click", addNewItem)
+// why don't you put ()
