@@ -1,4 +1,4 @@
-import "./styles.css";
+
 
 fetch('/.netlify/functions/get_data')
     .then(res => res.json())
@@ -40,11 +40,12 @@ function displayArray(){
     let theList = document.getElementsByClassName("todoList")
     // assign the list an empty value
     theList.innerHTML = ''
-    todoArray.forEach((item) => 
-    let newTodo = document.createElement(li)
+    // now repopulate with the current up-to-date contents of the array
+    todoArray.forEach((item) => {
+    let newTodo = document.createElement('li')
     newTodo.innerHTML = item.itemText
     theList.appendChild(newTodo)
-    )
+})
 
 }
 
@@ -61,6 +62,7 @@ function addNewItem(){
     todoArray.unshift(theNewObj)
     // now display the whole thing
     displayArray()
+    console.log('addNewItem function has executed')
 }
 
 // attach this functionality to the actual + button
