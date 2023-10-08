@@ -26,10 +26,10 @@ fetch('/.netlify/functions/get_data')
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // create an empty array
-let todoArray = []
+let todoArray = [] // should this be a const instead?
 
 // create the object prototype for a todoItem
-const todoItem = {
+const todoItem = { // is this even the right syntax? What about a constructor function?
     isComplete: false,
     itemText: ''
 }
@@ -43,9 +43,9 @@ function displayArray(){
     theList.innerHTML = ''
     // now repopulate with the current up-to-date contents of the array
     todoArray.forEach((item) => {
-    let newTodo = document.createElement('li')
-    newTodo.innerHTML = item.itemText
-    theList.appendChild(newTodo)
+    let newTodo = document.createElement('li') // is this even making anything?
+    newTodo.innerHTML = item.itemText // is this valid?
+    theList.appendChild(newTodo) // is this valid?
 })
 
 }
