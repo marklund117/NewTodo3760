@@ -31,7 +31,8 @@ let todoArray = [] // should this be a const instead?
 // create the object prototype for a todoItem
 const todoItem = { // is this even the right syntax? What about a constructor function?
     isComplete: false,
-    itemText: ''
+    itemText: '',
+    itemNum: 0
 }
 
 // a function to display the whole array
@@ -43,9 +44,15 @@ function displayArray(){
     theList.innerHTML = ''
     // now repopulate with the current up-to-date contents of the array
     todoArray.forEach((item) => {
-    let newTodo = document.createElement('li') // is this even making anything?
-    newTodo.innerHTML = item.itemText // is this valid?
-    theList.appendChild(newTodo) // is this valid?
+    let newTodo = document.createElement('li')
+    let textSpan = document.createElement('span')
+    let individualButton = document.createElement('button')
+    individualButton.innerHTML = 'Click to Complete'
+    individualButton.className = 'indButton'
+    textSpan.innerHTML = item.itemText
+    newTodo.appendChild(textSpan)
+    newTodo.appendChild(individualButton)
+    theList.appendChild(newTodo)
 })
 
 }
@@ -59,16 +66,20 @@ function addNewItem(){
     // set values
     theNewObj.isComplete = false
     theNewObj.itemText = givenText
+    theNewObj.itemNum = (todoArray.length)
     // add it to the start of the array
-    todoArray.unshift(theNewObj)
+    todoArray.push(theNewObj)
     // now display the whole thing
     displayArray()
     // console log troubleshooting stuff
     console.log('addNewItem function has executed') // why does this execute before button press?
     console.log(`the givenText variable has a value of ${givenText}`)
     console.log(todoArray)
+    // we should clear the input field
+    let inputField = document.getElementById("inputBox")
+    inputField.value = ''
 }
 
 // attach this functionality to the actual + button
 document.getElementById("addItemButton").addEventListener("click", addNewItem)
-// why don't you put ()
+// why don't you put () ?
