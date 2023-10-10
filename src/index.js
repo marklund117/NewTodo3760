@@ -49,6 +49,8 @@ function displayArray(){
     let individualButton = document.createElement('button')
     individualButton.innerHTML = 'Click to Complete'
     individualButton.className = 'indButton'
+    // we need each item's button to have a unique id for event listening
+    individualButton.id = `button${item.itemNum}`
     textSpan.innerHTML = item.itemText
     newTodo.appendChild(textSpan)
     newTodo.appendChild(individualButton)
@@ -83,3 +85,5 @@ function addNewItem(){
 // attach this functionality to the actual + button
 document.getElementById("addItemButton").addEventListener("click", addNewItem)
 // why don't you put () ?
+
+// how do we listen for clicks on an unknown number of generated buttons?
