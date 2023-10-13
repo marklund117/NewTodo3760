@@ -87,3 +87,7 @@ document.getElementById("addItemButton").addEventListener("click", addNewItem)
 // why don't you put () ?
 
 // how do we listen for clicks on an unknown number of generated buttons?
+
+// something to do with templates again, like generating the IDs for each
+
+// but each one needs a distinct function - changing the state of a unique object
