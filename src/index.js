@@ -1,11 +1,6 @@
-
-
 fetch('/.netlify/functions/get_data')
     .then(res => res.json())
     .then(data => console.log(data))
-
-// okay time to sit down and try to make something that actually works
-// heavy googling and LLM reference use inbound, but I'll try to understand everything
 
 // lets establish what functionalities are needed
 
@@ -84,7 +79,6 @@ function addNewItem(){
 
 // attach this functionality to the actual + button
 document.getElementById("addItemButton").addEventListener("click", addNewItem)
-// why don't you put () ?
 
 // how do we listen for clicks on an unknown number of generated buttons?
 
