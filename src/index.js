@@ -27,6 +27,7 @@ let todoArray = [] // should this be a const instead?
 const todoItem = {
     isComplete: false,
     itemText: '',
+    isInEditMode: false // New property that keeps track of whether this item is currently being edited.
 }
 
 // a function to display the whole array
@@ -49,15 +50,13 @@ function displayArray(){
         editButton.innerHTML = 'Edit'
         editButton.className = 'editButton'
         individualButton.className = 'indButton'
-        // Check whether user is still editing:
-        let isEditing  =
-        newTodo.querySelector(`input[type="text"]`);
-        // If yes - get value from input field:
-        if (isEditing) {
-        textSpan.innerHTML = isEditing.value;
+        // Check whether the item is being edited:
+        if (item.isInEditMode) {
+            textSpan.innerHTML = `<input type="text" value="${item.itemText}" />`;
+            editButton.innerHTML = 'Save';
         } else {
-        // If not, get data from original list item:
-        textSpan.innerHTML = todoArray[index].itemText
+            textSpan.innerHTML = item.itemText;
+            editButton.innerHTML = 'Edit';
         }
         individualButton.dataset.num = index;
         // textSpan.innerHTML = item.itemText
@@ -141,24 +140,40 @@ function editItem(index){
     let editButton = listItem.querySelector('.editButton');
 
     let currentText = spanElement.innerHTML;
-    spanElement.innerHTML = `<input type="text" value="${currentText}" />`;
 
-    editButton.innerHTML = 'Save';
-    editButton.removeEventListener('click', editItem);
-    editButton.addEventListener('click', saveItem.bind(null, index));
+    // Create input field with existing item-text as value:
+    var inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.value = currentText;
+
+        // Replace span with this new input field:
+        listItem.replaceChild(inputField, spanElement);
+
+        /*Since you've replaced 'span' with an actual '<input>', instead of nesting it inside,* you can directly grab its value while saving edits.
+         */
+
+     todoArray[Number(index)].isInEditMode = true;
+     editButton.innerHTML = 'Save';
 }
-function saveItem(index){
-    // restore the item text to it's normal non editable state, but updated to reflect any changes
-    // switch the button text back to 'edit'
-    let listItem = document.querySelectorAll('.todoList li')[Number(index)];
-    let inputField = listItem.querySelector('input');
 
-    if (inputField) {
-        todoArray[Number(index)].itemText = inputField.value;
+function saveItem(index){
+   // restore the item text to it's normal non editable state, but updated to reflect any changes
+   // switch the button text back to 'edit'
+   let listItem  =
+      document.querySelectorAll('.todoList li')[Number(index)];
+
+   /* Instead of grabbing from <input> nested within <span>,
+      *now we're grabbing from an actual <input>.*/
+      const newItemText  =
+            listItem.querySelector(`input`).value;
+
+      if (newItemText) {
+         todoArray[Number(index)].itemText = newItemText;
+         todoArray[Number(index)].isInEditMode = false;
 
         displayArray();
         addListeners();
-     }
+      }
 }
 
 // Adding event listeners:
