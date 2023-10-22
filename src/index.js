@@ -24,7 +24,7 @@ fetch('/.netlify/functions/get_data')
 let todoArray = [] // should this be a const instead?
 
 // create the object prototype for a todoItem
-const todoItem = { // is this even the right syntax? What about a constructor function?
+const todoItem = {
     isComplete: false,
     itemText: '',
     itemNum: 0
@@ -69,7 +69,7 @@ function addNewItem(){
     // now display the whole thing
     displayArray()
     // console log troubleshooting stuff
-    console.log('addNewItem function has executed') // why does this execute before button press?
+    console.log('addNewItem function has executed')
     console.log(`the givenText variable has a value of ${givenText}`)
     console.log(todoArray)
     // we should clear the input field
