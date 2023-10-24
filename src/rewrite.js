@@ -156,7 +156,6 @@ function saveEdit(index){
 // event listeners for edit buttons
 document.querySelector('.todoList').addEventListener('click', (event) => {
     let targetElement = event.target
-  
     // Verify if clicked element is a button with class name 'indButton'
     if(targetElement.className === 'editButton') {
     // now how can we get correct edit/save behavior here?
