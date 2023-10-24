@@ -1,4 +1,4 @@
-// due to clutter i'm rewriting the JS code
+// due to clutter i'm rewriting the JS code - vercel? hello?
 
 // First: Instructor-required code
 fetch('/.netlify/functions/get_data')
