@@ -169,7 +169,6 @@ document.querySelector('.todoList').addEventListener('click', (event) => {
     }
 })
 
-
 // clear done functionality
 function clearDone(){
     let filteredTodos = todoArray.filter((item) => item.isComplete === false)
