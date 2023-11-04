@@ -113,3 +113,19 @@ button {
   font-size: 16px;
   padding: 6px 10px;
 }
+
+.footer {
+  flex-direction: column;
+}
+
+.footerTop, .footerBottom {
+  padding: 9px;
+}
+
+.footerTop span, .footerBottom span {
+  margin-right: 10px;
+}
+
+#delCat {
+  background-color: rgb(211, 83, 83);
+}

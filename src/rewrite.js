@@ -9,11 +9,15 @@ fetch('/.netlify/functions/get_data')
 const todoItem = {
     isComplete: false, // false bool to start
     todoText: '', // empty string
-    editMode: false // only TRUE if the item is currently editable
+    editMode: false, // only TRUE if the item is currently editable
+    category: '' // new prop for categories
 }
 
 // data structure on our end for the objects
 let todoArray = []
+
+// and a structure for the list of categories
+let categoryArray = []
 
 // we need access to the list element that all items go in
 let theList = document.getElementsByClassName("todoList")[0]
@@ -183,5 +187,5 @@ function updateRemaining() {
     let remainder = document.getElementById("remaining")
     let filteredTodos = todoArray.filter((item) => item.isComplete === false)
     let numIncomplete = filteredTodos.length
-    remainder.innerHTML = `You have ${numIncomplete} pending tasks`
+    remainder.innerHTML = `You have ${numIncomplete} pending tasks.`
 }
