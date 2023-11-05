@@ -196,6 +196,8 @@ function updateRemaining() {
 let upperCat = document.getElementsByClassName("catList")[0]
 let lowerCat = document.getElementsByClassName("catWorkbench")[0]
 
+
+// render the category dropdowns
 function renderCategories() {
     // first clean up
     upperCat.innerHTML = ''
@@ -210,6 +212,7 @@ function renderCategories() {
     }
 }
 
+// add a brand new category and re-render
 function addNewCategory() {
     let givenCatName = document.getElementById("catInputBox").value
     categoryArray.push(givenCatName)
@@ -220,3 +223,5 @@ function addNewCategory() {
 
 // event listener for the category + button
 document.getElementById("addCategoryButton").addEventListener("click", addNewCategory)
+
+// next we need functionality for delete category
