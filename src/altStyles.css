@@ -114,6 +114,11 @@ button {
   padding: 6px 10px;
 }
 
+.footer select {
+  height: 36px;
+  padding-top: 2px;
+}
+
 .footer {
   flex-direction: column;
 }

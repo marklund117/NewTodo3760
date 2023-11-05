@@ -189,3 +189,34 @@ function updateRemaining() {
     let numIncomplete = filteredTodos.length
     remainder.innerHTML = `You have ${numIncomplete} pending tasks.`
 }
+
+// CATEGORIES STUFF
+
+// we need access to the select elements
+let upperCat = document.getElementsByClassName("catList")[0]
+let lowerCat = document.getElementsByClassName("catWorkbench")[0]
+
+function renderCategories() {
+    // first clean up
+    upperCat.innerHTML = ''
+    lowerCat.innerHTML = ''
+    for (const element of categoryArray) {
+        let freshOption = document.createElement('option')
+        let freshOption2 = document.createElement('option')
+        freshOption.innerText = element
+        freshOption2.innerText = element
+        upperCat.appendChild(freshOption)
+        lowerCat.appendChild(freshOption2)
+    }
+}
+
+function addNewCategory() {
+    let givenCatName = document.getElementById("catInputBox").value
+    categoryArray.push(givenCatName)
+    let catField = document.getElementById("catInputBox")
+    catField.value = ''
+    renderCategories()
+}
+
+// event listener for the category + button
+document.getElementById("addCategoryButton").addEventListener("click", addNewCategory)

@@ -15,13 +15,15 @@
   <body>
     <div class="wrapper">
       <header>To-Do List</header>
+      <h3>Add Categories</h3>
       <div class="inputField">
-        <input type="text" id="inputBox" placeholder="Add a new category" />
+        <input type="text" id="catInputBox" placeholder="Enter a new category" />
         <button id="addCategoryButton"><i class="fas fa-plus"></i></button>
       </div>
+      <h3>Add Tasks</h3>
       <div class="inputField">
         <input type="text" id="inputBox" placeholder="Enter a new task" />
-        <select id="catList">
+        <select class="catList">
         <!-- the JS wil insert categories as <option> tags here -->
         </select>
         <button id="addItemButton"><i class="fas fa-plus"></i></button>
@@ -34,8 +36,9 @@
         <span id = "remaining">You have 0 pending tasks.</span>
         <button id="cleardone">Clear Done</button>
         </div>
+        <h3>Select a Category</h3>
         <div class="footerBottom">
-          <select id="catWorkbench">
+          <select class="catWorkbench">
           <!-- choose which category to perform an operation on -->
           </select>
         <button id="filterCat">Display Category</button>
