@@ -1,5 +1,11 @@
 # todoTemplate
 
+# Mark Lund - DGM 3760
+
+Hmm
+
+# Instructor Template Text
+
 This repo contains HTML and CSS code to be used as a todo starter for DGM 3760.
 
 Some quick notes and things to think about when using this repo.
