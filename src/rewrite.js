@@ -22,6 +22,10 @@ let categoryArray = []
 // we need access to the list element that all items go in
 let theList = document.getElementsByClassName("todoList")[0]
 
+// we need access to the select elements
+let upperCat = document.getElementsByClassName("catList")[0]
+let lowerCat = document.getElementsByClassName("catWorkbench")[0]
+
 // Now we need a function to build a non-editable todoItem (DOM elements)
 function buildTodo(item, index){
     // li containing: edit button, span, completion button
@@ -31,7 +35,7 @@ function buildTodo(item, index){
     let doneButton = document.createElement('button')
     // innertext time
     editButton.innerText = 'Edit'
-    textSpan.innerText = item.todoText
+    textSpan.innerText = `${item.todoText} || ${item.category}`
     // check if done or not and change completion button accordingly
     if (item.isComplete) {
         doneButton.innerText = 'Completed'
@@ -60,6 +64,10 @@ function buildEditableTodo(item, index){
     let textField = document.createElement('input')
     textField.type = 'text'
     textField.value = item.todoText
+
+    let catField = document.createElement('input')
+    catField.type = 'text'
+    catField.value = item.category
     // dome button
     let doneButton = document.createElement('button')
     // innertext time - the edit button should say 'save'
@@ -79,6 +87,7 @@ function buildEditableTodo(item, index){
     // assemble the thing
     freshLi.appendChild(editButton)
     freshLi.appendChild(textField)
+    freshLi.appendChild(catField)
     freshLi.appendChild(doneButton)
     return freshLi
 }
@@ -108,9 +117,13 @@ function displayArray(){
 function addTodo(){
     // get the input field text
     let givenText = document.getElementById("inputBox").value
+    // get top dropdown category
+    let chosenCategory = upperCat.value
     let freshTodo = Object.create(todoItem)
     // isComplete should initialize itself to false without us specifying that right?
     freshTodo.todoText = givenText
+    // now for category
+    freshTodo.category = chosenCategory
     // put it on the end of the array
     todoArray.push(freshTodo)
     // refresh display
@@ -192,11 +205,6 @@ function updateRemaining() {
 
 // CATEGORIES STUFF
 
-// we need access to the select elements
-let upperCat = document.getElementsByClassName("catList")[0]
-let lowerCat = document.getElementsByClassName("catWorkbench")[0]
-
-
 // render the category dropdowns
 function renderCategories() {
     // first clean up
@@ -225,3 +233,17 @@ function addNewCategory() {
 document.getElementById("addCategoryButton").addEventListener("click", addNewCategory)
 
 // next we need functionality for delete category
+function deleteCategory() {
+    let currentlySelectedCat = lowerCat.value;
+    let index = categoryArray.indexOf(currentlySelectedCat);
+
+    if (index !== -1) {
+        categoryArray.splice(index, 1);
+        renderCategories();
+    }
+}
+
+// and an event listener for it
+document.getElementById("delCat").addEventListener("click", deleteCategory)
+
+// functionality for 
